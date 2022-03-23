@@ -13,14 +13,14 @@ public:
 	Ray(int x, int y, int z)
 	{
 		rayOrigin = glm::vec3(x, y, z);
-		rayDirection = glm::vec3(x, y, 0); // TODO: default ray direction is to the center of image, maybe handle this better
-		std::cout<<"\nRay Origin at location:<" << x << ":" << y << ":" << z << ">";
-		std::cout<<"\nRay Direction at default location:<" << x << ":" << y << ":" << 0 << ">";
+		rayDirection = glm::vec3(x, y, 0); // TODO: default ray direction is towards a z=0 plane, parallel lines
+		//std::cout<<"\nRay Origin at location:<" << x << ":" << y << ":" << z << ">";
+		//std::cout<<"\nRay Direction at default location:<" << x << ":" << y << ":" << 0 << ">";
 	}
 	void setRayDirection(int x, int y, int z)
 	{
 		rayDirection = glm::vec3(x, y, z);
-		std::cout << "\nRay direction at updated location:<" << x << ":" << y << ":" << z << ">";
+		//std::cout << "\nRay direction at updated location:<" << x << ":" << y << ":" << z << ">";
 	}
 	int getRayLoad()
 	{

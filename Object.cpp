@@ -16,7 +16,7 @@ public:
 	{
 		color = inputColor;
 	}
-	virtual void checkHit(Ray&) = 0; // check if a Ray intersects an Object in each child class
+	virtual bool checkHit(Ray&) = 0; // check if a Ray intersects an Object in each child class
 private:
 	int color = 255; // default color of object is white(1), unless changed in child class
 };

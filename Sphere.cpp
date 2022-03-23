@@ -16,7 +16,7 @@ public:
 		sphereCenter = glm::vec3(x, y, z);
 	}
 
-	void checkHit(Ray& inputRay)
+	bool checkHit(Ray& inputRay)
 	{
 		// here you have ray details and object details, so update the Ray payload values
 		// math logic inspired from RTOW - Ray Tracing in one weekend
@@ -30,8 +30,11 @@ public:
 		auto discriminant = b * b - 4 * a * c;
 
 		if (discriminant > 0) // ray will hit object at some time
+		{
 			inputRay.setRayLoad(getColor()); // gets the color of the object and sets the rayLoad color
-		return;
+			return true;
+		}
+		return false;
 	}
 private:
 	int radius;
