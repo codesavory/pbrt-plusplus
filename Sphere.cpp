@@ -23,18 +23,27 @@ public:
 		/* simple logic - t^2b⋅b + 2tb⋅(A−C)+(A−C)⋅(A−C)−r^2=0, solve for t
 		where P(t)=A+tb -> Ray Equation
 		and (P−C)⋅(P−C)=r2 -> Sphere Equation*/
-		glm::vec3 oc = inputRay.getRayOrigin() - sphereCenter;
+		/*glm::vec3 oc = inputRay.getRayOrigin() - sphereCenter;
 		auto a = glm::dot(inputRay.getRayDirection(), inputRay.getRayDirection());
 		auto b = 2.0 * glm::dot(oc, inputRay.getRayDirection());
 		auto c = glm::dot(oc, oc) - radius * radius;
-		auto discriminant = b * b - 4 * a * c;
+		auto discriminant = b * b - 4.0 * a * c;
 
 		if (discriminant > 0) // ray will hit object at some time
 		{
 			inputRay.setRayLoad(getColor()); // gets the color of the object and sets the rayLoad color
 			return true;
 		}
-		return false;
+		return false;*/
+
+		// geometric solution
+		glm::vec3 L = sphereCenter - inputRay.getRayOrigin();
+		float tca = glm::dot(L, inputRay.getRayDirection());
+		float d2 = glm::dot(L, L) - tca * tca;
+		if (d2 > radius)
+			return false;
+		inputRay.setRayLoad(getColor());
+		return true;
 	}
 private:
 	int radius;
