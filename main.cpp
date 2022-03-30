@@ -9,8 +9,8 @@ int main()
 {
 	std::cout << "\nRay Tracer Version1 ";
 		
-	int width = 50;
-	int height = 50;
+	int width = 500;
+	int height = 500;
 
 	Camera cam = Camera(width/2, height/2, -10); //create a camera origin at -1 in z-axis
 
